@@ -58,7 +58,10 @@
     description = "Aditya";
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [
+      xournalpp
+      rnote
+    ];
   };
 
   # Allow unfree packages
@@ -75,6 +78,7 @@
     fuzzel
     firefox
     ghostty
+    networkmanagerapplet
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -84,6 +88,7 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+	
 
   # Enable Zsh
   programs.zsh.enable = true;
