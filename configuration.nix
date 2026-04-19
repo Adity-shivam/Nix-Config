@@ -27,7 +27,18 @@
   networking.networkmanager.enable = true;
 
   # Enable gdm
-  services.displayManager.gdm.enable = true;
+  # services.displayManager.gdm.enable = true;
+  
+  services.greetd = {
+  enable = true;
+  settings = {
+    default_session = {
+      command = "${config.programs.niri.package}/bin/niri-session";
+      user = "adi";
+    };
+  };
+};
+
   # Set your time zone.
   time.timeZone = "Europe/London";
 
