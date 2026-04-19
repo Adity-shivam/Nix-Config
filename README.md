@@ -1,1 +1,1 @@
-#yolo
+nix config version control
