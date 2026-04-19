@@ -25,20 +25,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-
-  # Enable gdm
-  # services.displayManager.gdm.enable = true;
-  
-  services.greetd = {
-  enable = true;
-  settings = {
-    default_session = {
-      command = "${config.programs.niri.package}/bin/niri-session";
-      user = "adi";
-    };
-  };
-};
-
+   
   # Set your time zone.
   time.timeZone = "Europe/London";
 
@@ -82,14 +69,20 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    # cli 
     neovim
     wget
     curl
     git
+    
+    # Niri Gui
     fuzzel
     firefox
     ghostty
     networkmanagerapplet
+    swaylock
+    swayidle
+    mako
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -109,6 +102,25 @@
   
   # Enable Niri Window Manager
   programs.niri.enable = true;
+
+  # Enable gdm
+  # services.displayManager.gdm.enable = true;
+  
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${config.programs.niri.package}/bin/niri-session";
+        user = "adi";
+      };
+    };
+  };
+  security.polkit.enable = true; # polkit
+  services.gnome.gnome-keyring.enable = true; # secret service
+  security.pam.services.swaylock = {};
+
+  programs.waybar.enable = true; # top bar
+ 
 
   # List services that you want to enable:
 
