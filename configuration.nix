@@ -74,6 +74,7 @@
     wget
     curl
     git
+    fzf
     
     # Niri Gui
     fuzzel
