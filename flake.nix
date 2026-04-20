@@ -18,7 +18,7 @@
     nixosConfigurations.Nix-Chan = nixpkgs_unstable.lib.nixosSystem {
       specialArgs = {inherit inputs;}; # inherit input is same as inputs = inputs
       modules = [
-        ./Hosts/HP-Victus/configuration.nix
+        ./hosts/HP-Victus/configuration.nix
          inputs.home-manager.nixosModules.default 
       ];
     };
