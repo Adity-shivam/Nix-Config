@@ -57,16 +57,17 @@
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
+      nautilus
     ];
   };
 
   # Home Manager
-  home-manager = {
-    extraSpecialArgs = {inherit inputs; };
-    users = {
-      "adi" = import ./home.nix;
-    };
-  };
+  # home-manager = {
+  #   extraSpecialArgs = {inherit inputs; };
+  #   users = {
+  #     "adi" = import ./home.nix;
+  #   };
+  # };
 
 
   # Allow unfree packages

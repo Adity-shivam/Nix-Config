@@ -4,10 +4,10 @@
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    home-manager = {
-      url = "github:nix-community/home-manager";
-     inputs.nixpkgs.follows = "nixpkgs-unstable"; # inputs.home-manager.inputs.nixpkgs is same as inputs.nixpkgs_unstable and do not reinstall two version of nixpkgs/nixos-unstable
-    };
+    # home-manager = {
+    #   url = "github:nix-community/home-manager";
+    #   inputs.nixpkgs.follows = "nixpkgs-unstable"; # inputs.home-manager.inputs.nixpkgs is same as inputs.nixpkgs_unstable and do not reinstall two version of nixpkgs/nixos-unstable
+    # };
   };
 
   outputs = { self, nixpkgs-unstable, ... }@inputs: {
@@ -19,7 +19,7 @@
       specialArgs = {inherit inputs;}; # inherit input is same as inputs = inputs. This let us use inputs in the modules below
       modules = [
         ./hosts/HP-Victus/configuration.nix
-        inputs.home-manager.nixosModules.Nix-Chan
+        # inputs.home-manager.nixosModules.default
       ];
     };
   };
