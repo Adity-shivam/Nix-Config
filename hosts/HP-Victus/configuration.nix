@@ -2,16 +2,24 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
-   
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
+
   # Enable Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -25,7 +33,7 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
-   
+
   # Set your time zone.
   time.timeZone = "Europe/London";
 
@@ -55,21 +63,22 @@
     isNormalUser = true;
     description = "Aditya";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
     packages = with pkgs; [
       nautilus
       inputs.zen-browser.packages.x86_64-linux.default
     ];
   };
-
   # Home Manager
-   # home-manager = {
-   #   extraSpecialArgs = {inherit inputs; };
-   #   users = {
-   #     "adi" = import ./home.nix;
-   #   };
-   # };
-
+  # home-manager = {
+  #   extraSpecialArgs = {inherit inputs; };
+  #   users = {
+  #     "adi" = import ./home.nix;
+  #   };
+  # };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -92,8 +101,9 @@
     nil
     nixd
     nixpkgs-fmt
+    nixfmt
     stylua
-    
+
     # Niri Gui
     fuzzel
     firefox
@@ -103,7 +113,7 @@
     swaylock
     swayidle
     mako
-    ];
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -112,26 +122,25 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
-	
 
   # Enable Zsh
   programs.zsh.enable = true;
   programs.zsh.enableCompletion = true;
   programs.zsh.autosuggestions.enable = true;
   programs.zsh.syntaxHighlighting.enable = true;
-  
+
   # Enable Niri Window Manager
   programs.niri.enable = true;
- 
+
   security.polkit.enable = true; # polkit
   services.gnome.gnome-keyring.enable = true; # secret service
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock = { };
 
   programs.waybar.enable = true; # top bar
 
   # Enable gdm
   services.displayManager.gdm.enable = true;
-  
+
   #  services.greetd = {
   #    enable = true;
   #    settings = {
@@ -141,7 +150,6 @@
   #      };
   #    };
   #  };
- 
 
   # List services that you want to enable:
 
