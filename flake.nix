@@ -3,7 +3,10 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    zen-browser= {
+      url = "github:youwen5/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     # home-manager = {
     #   url = "github:nix-community/home-manager";
     #   inputs.nixpkgs.follows = "nixpkgs-unstable"; # inputs.home-manager.inputs.nixpkgs is same as inputs.nixpkgs_unstable and do not reinstall two version of nixpkgs/nixos-unstable

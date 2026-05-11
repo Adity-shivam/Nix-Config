@@ -58,16 +58,17 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       nautilus
+      inputs.zen-browser.packages.x86_64-linux.default
     ];
   };
 
   # Home Manager
-  # home-manager = {
-  #   extraSpecialArgs = {inherit inputs; };
-  #   users = {
-  #     "adi" = import ./home.nix;
-  #   };
-  # };
+   # home-manager = {
+   #   extraSpecialArgs = {inherit inputs; };
+   #   users = {
+   #     "adi" = import ./home.nix;
+   #   };
+   # };
 
 
   # Allow unfree packages
@@ -83,6 +84,15 @@
     curl
     git
     fzf
+    clang-tools
+    gcc
+    ripgrep
+    luajit
+    lua-language-server
+    nil
+    nixd
+    nixpkgs-fmt
+    stylua
     
     # Niri Gui
     fuzzel
@@ -93,7 +103,7 @@
     swaylock
     swayidle
     mako
-  ];
+    ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
