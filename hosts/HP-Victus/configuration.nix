@@ -70,6 +70,7 @@
     packages = with pkgs; [
       nautilus
       inputs.zen-browser.packages.x86_64-linux.default
+      waydroid
     ];
   };
   # Home Manager
@@ -79,7 +80,14 @@
   #     "adi" = import ./home.nix;
   #   };
   # };
-
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+    nerd-fonts.noto
+    nerd-fonts.hack
+    nerd-fonts.ubuntu
+    nerd-fonts.jetbrains-mono
+  ];
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -103,6 +111,11 @@
     nixpkgs-fmt
     nixfmt
     stylua
+    vscode-json-languageserver
+    prettierd
+    prettier
+    arduino-cli
+    arduino-language-server
 
     # Niri Gui
     fuzzel
@@ -112,6 +125,7 @@
     networkmanagerapplet
     swaylock
     swayidle
+    brightnessctl
     mako
   ];
 
@@ -140,6 +154,12 @@
 
   # Enable gdm
   services.displayManager.gdm.enable = true;
+
+  # Enable pipewire
+  services.pipewire.enable = true;
+
+  # Enable Bluetooth
+  hardware.bluetooth.enable = true;
 
   #  services.greetd = {
   #    enable = true;
